@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                int[] sortArray = sortArray(new int[]{10, 5, 7, 25, 465, -32});
+                int[] sortArray = sortArray(new int[]{10, 5, 7, 25, 465, -32}, false);
                 StringBuilder builder = new StringBuilder();
                 for (int value : sortArray) {
                     builder.append(value).append(",");
@@ -50,5 +50,5 @@ public class MainActivity extends AppCompatActivity {
 
     public native int calculateAdd(int num1, int num2);
 
-    public native int[] sortArray(int[] array);
+    public native int[] sortArray(int[] array, boolean ascendingOrder);
 }
