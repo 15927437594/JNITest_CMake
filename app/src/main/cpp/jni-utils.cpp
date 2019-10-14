@@ -4,18 +4,18 @@
 #include <cstddef>
 
 extern "C" JNIEXPORT jint JNICALL
-Java_cn_com_hwtc_jnitest_MainActivity_calculateAdd(
+Java_cn_com_hwtc_jni_MainActivity_calculateAdd(
         JNIEnv *env,
         jobject /* this */, jint num1, jint num2) {
     return num1 + num2;
 }
 
 extern "C" JNIEXPORT jintArray JNICALL
-Java_cn_com_hwtc_jnitest_MainActivity_sortArray(
+Java_cn_com_hwtc_jni_MainActivity_sortArray(
         JNIEnv *env,
         jobject /* this */, jintArray arr_, jboolean ascendingOrder) {
     //1.获取arr数组的元素
-    jint *arr = env->GetIntArrayElements(arr_, NULL);
+    jint *arr = env->GetIntArrayElements(arr_, nullptr);
     //2.获取arr数组的长度
     jsize arrSize = env->GetArrayLength(arr_);
     //3.冒泡排序(升序),如果是降序则将">"改为"<"即可
