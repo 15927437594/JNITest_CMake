@@ -1,4 +1,4 @@
-package cn.com.hwtc.jnitest;
+package cn.com.hwtc.jni;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("cn.com.hwtc.jnitest", appContext.getPackageName());
+        assertEquals("cn.com.hwtc.jni", appContext.getPackageName());
     }
 }

@@ -1,4 +1,4 @@
-package cn.com.hwtc.jnitest;
+package cn.com.hwtc.jni;
 
 import org.junit.Test;
 
