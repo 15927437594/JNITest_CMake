@@ -4,14 +4,14 @@
 #include <cstddef>
 
 extern "C" JNIEXPORT jint JNICALL
-Java_cn_com_hwtc_jni_MainActivity_calculateAdd(
+Java_cn_com_hwtc_jni_TestJNI_calculateAdd(
         JNIEnv *env,
         jobject /* this */, jint num1, jint num2) {
     return num1 + num2;
 }
 
 extern "C" JNIEXPORT jintArray JNICALL
-Java_cn_com_hwtc_jni_MainActivity_sortArray(
+Java_cn_com_hwtc_jni_TestJNI_sortArray(
         JNIEnv *env,
         jobject /* this */, jintArray arr_, jboolean ascendingOrder) {
     //1.获取arr数组的元素

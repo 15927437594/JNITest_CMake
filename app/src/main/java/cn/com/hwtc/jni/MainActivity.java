@@ -7,10 +7,9 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
-    // Used to load the 'native-lib' library on application startup.
     static {
-        System.loadLibrary("native-lib");
-        System.loadLibrary("jni-utils");
+        System.loadLibrary("nativeLib");
+        System.loadLibrary("jniUtils");
     }
 
     @Override
@@ -18,37 +17,19 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Example of a call to a native method
+        TestJNI testJNI = new TestJNI();
         final TextView tv = findViewById(R.id.sample_text);
-        tv.setText(stringFromJNI());
+        tv.setText(testJNI.stringFromJNI());
         Handler mHandler = new Handler();
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                tv.setText(String.valueOf(calculateAdd(10, 5)));
-            }
-        }, 2000L);
+        mHandler.postDelayed(() -> tv.setText(String.valueOf(testJNI.calculateAdd(10, 5))), 2000L);
 
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                int[] sortArray = sortArray(new int[]{10, 5, 7, 25, 465, -32}, false);
-                StringBuilder builder = new StringBuilder();
-                for (int value : sortArray) {
-                    builder.append(value).append(",");
-                }
-                tv.setText(builder.toString());
+        mHandler.postDelayed(() -> {
+            int[] sortArray = testJNI.sortArray(new int[]{10, 5, 7, 25, 465, -32}, false);
+            StringBuilder builder = new StringBuilder();
+            for (int value : sortArray) {
+                builder.append(value).append(",");
             }
+            tv.setText(builder.toString());
         }, 5000L);
     }
-
-    /**
-     * A native method that is implemented by the 'native-lib' native library,
-     * which is packaged with this application.
-     */
-    public native String stringFromJNI();
-
-    public native int calculateAdd(int num1, int num2);
-
-    public native int[] sortArray(int[] array, boolean ascendingOrder);
 }
